@@ -14,8 +14,9 @@ import (
 )
 
 const (
-	iter   = 100000
-	keyLen = 64
+	iter    = 100000
+	keyLen  = 64
+	saltLen = 64
 )
 
 func main() {
@@ -76,7 +77,7 @@ func passwordPrompt() (string, error) {
 }
 
 func makeSalt() ([]byte, error) {
-	buf := make([]byte, 64)
+	buf := make([]byte, saltLen)
 	_, err := rand.Read(buf)
 	if err != nil {
 		return nil, err
